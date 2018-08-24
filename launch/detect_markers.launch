@@ -1,0 +1,8 @@
+<launch>
+
+<!--rosparam command="load" file="$(find ipa_aruco_marker_detection)/config/detect_markers_config.yaml"/-->
+<!--include file="$(find realsense2_camera)/launch/rs_rgbd.launch" /-->
+<node name="ipa_aruco_marker_detection_node1" pkg="ipa_aruco_marker_detection" type="ipa_aruco_marker_detection_node" output="screen"/>
+
+
+</launch>

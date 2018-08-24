@@ -1,0 +1,22 @@
+topic_name: '/camera/color/image_raw'
+parent_joint_to_camera: 'stick'
+camera_joint_name: 'camera_holder'
+
+
+transform_camera_holder_x: 0.574
+transform_camera_holder_y: 0.0
+transform_camera_holder_z: 0.250
+
+
+rotation_vector_camera_holder_x: -0.925
+rotation_vector_camera_holder_y: 0
+rotation_vector_camera_holder_z: -1.5707
+
+aruco_square_size: 0.03
+marker_dictionary: 'DICT_4X4_50'
+aruco_grid_board_markers_x: 7
+aruco_grid_board_markers_y: 2
+aruco_grid_board_marker_lenght: 0.05
+
+aruco_grid_board_marker_separation: 0.01
+aruco_grid_board_first_marker: 0
