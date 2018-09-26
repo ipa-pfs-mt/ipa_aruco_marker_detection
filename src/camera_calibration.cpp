@@ -27,7 +27,6 @@ static const std::string OPENCV_WINDOW = "Image window";
 
 class CameraCalibration
 {
-
   ros::NodeHandle node_handle;
   image_transport::ImageTransport it;
   image_transport::Subscriber image_sub;

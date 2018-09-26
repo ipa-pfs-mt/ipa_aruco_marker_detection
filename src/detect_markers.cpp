@@ -13,26 +13,9 @@ MarkerDetection::MarkerDetection() : image_transport(node_handle)
 
   loadCameraCalibration("Camera Calib File", camera_matrix,
                         distance_coefficients);
-  ROS_DEBUG_STREAM_THROTTLE_NAMED(5, "test_only", camera_matrix);
-}
+ }
 MarkerDetection::~MarkerDetection() {}
 
-void MarkerDetection::imageCbIr(const sensor_msgs::ImageConstPtr& msg)
-{
-  cv_bridge::CvImageConstPtr cv_ptr;
-  try
-  {
-    cv_ptr = cv_bridge::toCvShare(
-        msg, enc::TYPE_8UC1); // cv_ptr = cv_bridge::toCvShare(msg, enc::BGR8);
-  }
-  catch (cv_bridge::Exception& e)
-  {
-    ROS_ERROR("cv_bridge exception: %s", e.what());
-    return;
-  }
-  estimatePoseBoard(cv_ptr->image, camera_matrix, distance_coefficients, 0.05f,
-                    "Infrared");
-}
 void MarkerDetection::imageCb(const sensor_msgs::ImageConstPtr& msg)
 {
   cv_bridge::CvImageConstPtr cv_ptr;
@@ -165,23 +148,10 @@ Vec3f MarkerDetection::rotationMatrixtoEulerAngles(Mat& rotation_matrix)
   return Vec3f(x, y, z);
 }
 
-Vec3d MarkerDetection::RunningAverage(Vec3d vector)
-{
-  std::list<Vec3d> buffer;
-  buffer.push_back(vector);
-  if (buffer.size() > 10)
-    buffer.pop_front();
-  Vec3d sum = vector;
-  for (list<Vec3d>::iterator it = buffer.begin(); it != buffer.end(); ++it)
-    sum += (Vec3d)*it;
-  Vec3d mean = sum * (int)(1 / buffer.size());
-  return mean;
-}
-
 bool MarkerDetection::loadCameraCalibration(string name, Mat& camera_matrix,
                                             Mat& distance_coefficients)
 {
-  cout << "loadCameraCalibration function called" << endl;
+  //cout << "loadCameraCalibration function called" << endl;
   ifstream inStream(name);
   if (inStream)
   {
@@ -219,7 +189,7 @@ bool MarkerDetection::loadCameraCalibration(string name, Mat& camera_matrix,
     }
     inStream.close();
     return true;
-    cout << "saveCameraCalibration function success" << endl;
+    //cout << "saveCameraCalibration function success" << endl;
   }
   return false;
 }

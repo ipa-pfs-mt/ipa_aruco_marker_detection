@@ -25,18 +25,18 @@ public:
 
   void createArucoMarkers()
   {
-    Mat outputMarker;
+    Mat output_marker;
 
-    Ptr<aruco::Dictionary> markerDictionary = aruco::getPredefinedDictionary(
+    Ptr<aruco::Dictionary> marker_dictionary = aruco::getPredefinedDictionary(
         aruco::PREDEFINED_DICTIONARY_NAME::DICT_4X4_50);
 
     for (int i = 0; i < 10; i++)
     {
-      aruco::drawMarker(markerDictionary, i, 500, outputMarker, 1);
+      aruco::drawMarker(marker_dictionary, i, 500, output_marker, 1);
       ostringstream convert;
-      string imageName = "4x4Marker_";
-      convert << imageName << i << ".jpg";
-      imwrite(convert.str(), outputMarker);
+      string image_name = "4x4Marker_";
+      convert << image_name << i << ".jpg";
+      imwrite(convert.str(), output_marker);
     }
   }
 };
@@ -44,7 +44,7 @@ public:
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "create_aruco_markers");
-  CreateMarkers cm;
+  CreateMarkers markers;
 
   ros::spin();
   return 0;

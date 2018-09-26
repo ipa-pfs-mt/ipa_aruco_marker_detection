@@ -45,6 +45,7 @@ class MarkerDetection
   Mat camera_matrix = Mat::eye(3, 3, CV_64F);
   Mat distance_coefficients;
 
+  //to be used with parameter server
   std::string topic_name, parent_joint_to_camera, camera_joint_name;
   int aruco_grid_board_markers_x, aruco_grid_board_markers_y, aruco_grid_board_first_marker;
   float aruco_square_size, aruco_grid_board_marker_lenght, aruco_grid_board_marker_separation;
@@ -53,8 +54,6 @@ class MarkerDetection
 
   MarkerDetection();
  ~MarkerDetection();
-
-  void imageCbIr(const sensor_msgs::ImageConstPtr& msg);
 
   void imageCb(const sensor_msgs::ImageConstPtr& msg);
 
@@ -69,10 +68,7 @@ class MarkerDetection
   Vec3f rotationMatrixtoEulerAngles(Mat &rotation_matrix);
 
 
-  Vec3d RunningAverage (Vec3d vectors);
-
-
-   bool loadCameraCalibration(string name, Mat& camera_matrix,
+  bool loadCameraCalibration(string name, Mat& camera_matrix,
                              Mat& distance_coefficients);
 
 
